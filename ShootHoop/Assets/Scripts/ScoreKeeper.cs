@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ScoreKeeper : MonoBehaviour {
 
@@ -12,12 +13,19 @@ public class ScoreKeeper : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    if(score > 10)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
 	}
 
     public void IncrementScore(int increment)
     {
         score += increment;
-        print("Score: " + score);
+    }
+
+    public int currentScore()
+    {
+        return score;
     }
 }

@@ -4,24 +4,31 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
-    int currentSceneIndex;
+    public string nextScene;
+    public float levelTimeLimit = 0.0f;
+    float timeInSeconds;
 
 	// Use this for initialization
 	void Start () {
-        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
-	    if(Input.GetButtonDown("Fire1"))
+        if ((levelTimeLimit > 0.0f))
         {
-            LoadNextScene();
+            timeInSeconds = levelTimeLimit - Time.timeSinceLevelLoad;
+            if (timeInSeconds <= 0) LoadNextScene();
         }
     }
 
-    private void LoadNextScene()
+    public void LoadNextScene()
     {
-        int nextSceneIndex = currentSceneIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex);
+        SceneManager.LoadScene(nextScene);
+    }
+
+    public float currentTime()
+    {
+        return timeInSeconds;
     }
 }
