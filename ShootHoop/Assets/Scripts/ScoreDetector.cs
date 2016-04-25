@@ -17,7 +17,6 @@ public class ScoreDetector : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        ScoreKeeper scoreKeeper = FindObjectOfType<ScoreKeeper>();
-        scoreKeeper.IncrementScore(score);
+        ScoreKeeper.MainScore.IncrementScore(score);
     }
 }

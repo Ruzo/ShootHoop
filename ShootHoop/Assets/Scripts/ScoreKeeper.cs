@@ -4,24 +4,36 @@ using UnityEngine.SceneManagement;
 
 public class ScoreKeeper : MonoBehaviour {
 
-    int score;
+    public static ScoreKeeper MainScore;
 
-	// Use this for initialization
-	void Start () {
-        score = 0;
-	}
-	
+    int score = 0;
+
+    void Awake ()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        if(MainScore == null)
+        {
+            MainScore = this;
+        }
+        else if(MainScore != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
 	// Update is called once per frame
 	void Update () {
-	    if(score > 10)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
 	}
 
     public void IncrementScore(int increment)
     {
         score += increment;
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
     }
 
     public int currentScore()

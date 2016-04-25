@@ -27,6 +27,12 @@ public class LevelManager : MonoBehaviour {
         SceneManager.LoadScene(nextScene);
     }
 
+    public void RestartLevel()
+    {
+        ScoreKeeper.MainScore.ResetScore();
+        SceneManager.LoadScene(nextScene);
+    }
+
     public float currentTime()
     {
         return timeInSeconds;
