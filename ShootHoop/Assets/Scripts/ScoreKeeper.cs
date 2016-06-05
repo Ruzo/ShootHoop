@@ -7,6 +7,7 @@ public class ScoreKeeper : MonoBehaviour {
     public static ScoreKeeper MainScore;
 
     int score = 0;
+    public bool ballIn = false;
 
     void Awake ()
     {
@@ -40,4 +41,5 @@ public class ScoreKeeper : MonoBehaviour {
     {
         return score;
     }
+
 }
